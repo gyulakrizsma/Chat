@@ -21,6 +21,7 @@ namespace Chat.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
             services.AddSignalR();
 
             services.AddAutoMapper(typeof(Startup).Assembly);
@@ -51,6 +52,7 @@ namespace Chat.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
