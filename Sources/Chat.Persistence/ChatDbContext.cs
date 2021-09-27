@@ -17,9 +17,9 @@ namespace Chat.Persistence
 
             modelBuilder
                 .Entity<MessageItemDatabaseObject>()
-                .HasData(new MessageItemDatabaseObject(Guid.NewGuid(), "User Server 1", "Hi", DateTime.Now),
-                    new MessageItemDatabaseObject(Guid.NewGuid(), "User Server 2", "There", DateTime.Now - TimeSpan.FromDays(2)),
-                    new MessageItemDatabaseObject(Guid.NewGuid(), "User Server 3", "Milord", DateTime.Now - TimeSpan.FromDays(3)));
+                .HasData(new MessageItemDatabaseObject(Guid.NewGuid(), "Joffrey", "Brilliant", DateTime.UtcNow - TimeSpan.FromDays(1)),
+                    new MessageItemDatabaseObject(Guid.NewGuid(), "Ninja", "Great resource, thanks", DateTime.UtcNow - TimeSpan.FromDays(2)),
+                    new MessageItemDatabaseObject(Guid.NewGuid(), "Patricia", "Sounds good to me", DateTime.UtcNow - TimeSpan.FromDays(3)));
         }
 
         public DbSet<MessageItemDatabaseObject> MessageItems { get; set; }
