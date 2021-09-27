@@ -12,11 +12,14 @@
 
         vm.$onInit = init;
 
-        vm.user = 'User 1';
-        vm.message = 'message 1';
+        vm.user = '';
+        vm.message = '';
         vm.messages = [];
 
-        vm.send = sendMessage;
+        vm.hasUser = false;
+
+        vm.sendMessage = sendMessage;
+        vm.joinChat = joinChat;
 
         function init() {
             chatApiService
@@ -42,6 +45,10 @@
 
         function sendMessage() {
             chatApiService.addMessage(vm.user, vm.message).then(dto => chatSignalrService.sendMessage(dto.data.user, dto.data.message));
+        }
+
+        function joinChat() {
+            vm.hasUser = true;
         }
 
         function handleMessageReceived(user, message) {
