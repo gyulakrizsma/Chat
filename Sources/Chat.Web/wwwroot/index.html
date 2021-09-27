@@ -6,13 +6,48 @@
 </head>
 <body ng-app="ChatApp">
 
-    <p>
-        Init
-    </p>
+    <div ng-controller="ChatController as vm">
+        <div class="container">
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-2">User</div>
+                <div class="col-4"><input type="text" id="userInput" ng-model="vm.user" /></div>
+            </div>
+            <div class="row">
+                <div class="col-2">Message</div>
+                <div class="col-4"><input type="text" id="messageInput" ng-model="vm.message" /></div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-6">
+                    <input type="button" id="sendButton" value="Send Message" ng-click="vm.send()" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <ul id="messagesList">
+                    <li ng-repeat="messageItem in vm.messages">
+                        <span>{{messageItem.user}}</span>
+                        <span>{{messageItem.message}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 <!-- App JS Files  -->
 <script src="lib/angular.js/angular.min.js"></script>
 <script src="lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<script src="js/app/chat.module.js"></script>
+<script src="js/app/chat.signalr.services.js"></script>
+<script src="js/app/chat.controller.js"></script>
 
 </body>
 
