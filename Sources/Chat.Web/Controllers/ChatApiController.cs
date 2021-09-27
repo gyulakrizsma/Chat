@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using Chat.Web.Application;
+using Chat.Web.Application.ChatFeatures.Commands;
+using Chat.Web.Application.ChatFeatures.Queries;
 using Chat.Web.Dtos;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chat.Web.Controllers
@@ -10,20 +12,20 @@ namespace Chat.Web.Controllers
     [Route("api/chat")]
     public class ChatApiController : Controller
     {
-        private readonly IChatRepository _repository;
-        
+        private readonly IMediator _mediator;
+
         private readonly IMapper _mapper;
 
-        public ChatApiController(IChatRepository repository, IMapper mapper)
+        public ChatApiController(IMediator mediator, IMapper mapper)
         {
-            _repository = repository;
+            _mediator = mediator;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ChatDto> GetMessagesAsync()
         {
-            var messageItems = await _repository.GetMessages();
+            var messageItems = await _mediator.Send(new GetMessageListQuery());
 
             return _mapper.Map<ChatDto>(messageItems);
         }
@@ -41,9 +43,9 @@ namespace Chat.Web.Controllers
                 return BadRequest("User is empty");
             }
 
-            var messageItem = await _repository.AddMessageItem(dto.User, dto.Message);
+            var messageItem = await _mediator.Send(new AddMessageCommand(dto.User, dto.Message));
 
-            return messageItem;
+            return _mapper.Map<MessageItemDto>(messageItem);
         }
     }
 }
