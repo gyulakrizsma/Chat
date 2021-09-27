@@ -45,6 +45,7 @@
 
         function sendMessage() {
             chatApiService.addMessage(vm.user, vm.message).then(dto => chatSignalrService.sendMessage(dto.data.user, dto.data.message));
+            vm.message = '';
         }
 
         function joinChat() {

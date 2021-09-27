@@ -18,14 +18,14 @@ namespace Chat.Persistence
             _db = db;
         }
 
-        public async Task<IReadOnlyList<MessageItem>> GetMessages()
+        public async Task<IReadOnlyList<MessageItem>> GetMessagesAsync()
         {
             var messageItems = await _db.MessageItems.OrderBy(m => m.CreatedAt).ToListAsync();
 
             return messageItems.Select(mi => new MessageItem(mi.User, mi.Message, mi.CreatedAt)).ToList();
         }
 
-        public async Task<MessageItem> AddMessageItem(string user, string message)
+        public async Task<MessageItem> AddMessageItemAsync(string user, string message)
         {
             var messageItem = new MessageItemDatabaseObject(Guid.NewGuid(), user, message, DateTime.UtcNow);
 

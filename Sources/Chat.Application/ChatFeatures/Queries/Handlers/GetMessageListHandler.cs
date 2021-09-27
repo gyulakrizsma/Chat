@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Chat.Domain.Models;
@@ -18,7 +17,7 @@ namespace Chat.Application.ChatFeatures.Queries.Handlers
 
         public async Task<IReadOnlyList<MessageItem>> Handle(GetMessageListQuery request, CancellationToken cancellationToken)
         {
-            return (await _repository.GetMessages()).OrderBy(mi => mi.CreatedAt).ToList();
+            return await _repository.GetMessagesAsync();
         }
     }
 }
