@@ -1,24 +1,39 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Chat.Application;
 using Chat.Domain.Models;
+using Chat.Persistence.DatabaseObjects;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chat.Persistence
 {
     public class ChatRepository : IChatRepository
     {
-        public Task<IReadOnlyCollection<MessageItem>> GetMessages()
-        {
-            var staticItems = StaticDataSource.GetMessages();
+        private readonly ChatDbContext _db;
 
-            return Task.FromResult(staticItems);
+        public ChatRepository(ChatDbContext db)
+        {
+            _db = db;
         }
 
-        public Task<MessageItem> AddMessageItem(string user, string message)
+        public async Task<IReadOnlyList<MessageItem>> GetMessages()
         {
-            var messageItem = StaticDataSource.AddMessageItem(user, message);
+            var messageItems = await _db.MessageItems.OrderBy(m => m.CreatedAt).ToListAsync();
 
-            return Task.FromResult(messageItem);
+            return messageItems.Select(mi => new MessageItem(mi.User, mi.Message, mi.CreatedAt)).ToList();
+        }
+
+        public async Task<MessageItem> AddMessageItem(string user, string message)
+        {
+            var messageItem = new MessageItemDatabaseObject(Guid.NewGuid(), user, message, DateTime.UtcNow);
+
+            await _db.MessageItems.AddAsync(messageItem);
+            await _db.SaveChangesAsync();
+
+            return new MessageItem(messageItem.User, messageItem.Message, messageItem.CreatedAt);
+
         }
     }
 }

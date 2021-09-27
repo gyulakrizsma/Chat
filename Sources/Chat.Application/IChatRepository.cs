@@ -6,7 +6,7 @@ namespace Chat.Application
 {
     public interface IChatRepository
     {
-        Task<IReadOnlyCollection<MessageItem>> GetMessages();
+        Task<IReadOnlyList<MessageItem>> GetMessages();
         
         Task<MessageItem> AddMessageItem(string user, string message);
     }
