@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Persistence", "Chat.Persistence\Chat.Persistence.csproj", "{0B86FAD8-44AC-48C0-9DEE-36020E4AD69E}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{33DBA449-AFA2-4770-B9C0-52EE225BFE2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0B86FAD8-44AC-48C0-9DEE-36020E4AD69E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B86FAD8-44AC-48C0-9DEE-36020E4AD69E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B86FAD8-44AC-48C0-9DEE-36020E4AD69E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33DBA449-AFA2-4770-B9C0-52EE225BFE2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33DBA449-AFA2-4770-B9C0-52EE225BFE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33DBA449-AFA2-4770-B9C0-52EE225BFE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33DBA449-AFA2-4770-B9C0-52EE225BFE2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
