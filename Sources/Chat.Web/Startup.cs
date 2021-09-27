@@ -1,6 +1,7 @@
 using Chat.Web.Application;
 using Chat.Web.Hubs;
 using Chat.Web.Persistence;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,7 @@ namespace Chat.Web
             services.AddSignalR();
 
             services.AddAutoMapper(typeof(Startup).Assembly);
+            services.AddMediatR(typeof(Startup).Assembly);
 
             services.AddScoped<IChatRepository, ChatRepository>();
         }
