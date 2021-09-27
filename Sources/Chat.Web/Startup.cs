@@ -5,6 +5,7 @@ using Chat.Web.Hubs;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +30,9 @@ namespace Chat.Web
             services.AddAutoMapper(typeof(Startup).Assembly);
             services.AddMediatR(typeof(AssemblyMarker).Assembly);
 
+            services.AddDbContext<ChatDbContext>(options => options
+                .UseSqlServer(Configuration.GetConnectionString("ChatDb")));
+            
             services.AddScoped<IChatRepository, ChatRepository>();
         }
 
