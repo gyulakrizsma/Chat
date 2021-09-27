@@ -1,4 +1,6 @@
+using Chat.Web.Application;
 using Chat.Web.Hubs;
+using Chat.Web.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +22,10 @@ namespace Chat.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSignalR();
+
+            services.AddAutoMapper(typeof(Startup).Assembly);
+
+            services.AddScoped<IChatRepository, ChatRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
