@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Chat.Web.Domain.Models;
+using Chat.Domain.Models;
 using MediatR;
 
-namespace Chat.Web.Application.ChatFeatures.Commands.Handlers
+namespace Chat.Application.ChatFeatures.Commands.Handlers
 {
     public class AddMessageHandler : IRequestHandler<AddMessageCommand, MessageItem>
     {

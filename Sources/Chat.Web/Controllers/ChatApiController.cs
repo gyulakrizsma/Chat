@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using Chat.Web.Application.ChatFeatures.Commands;
-using Chat.Web.Application.ChatFeatures.Queries;
+using Chat.Application.ChatFeatures.Commands;
+using Chat.Application.ChatFeatures.Queries;
 using Chat.Web.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

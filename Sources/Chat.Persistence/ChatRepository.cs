@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Chat.Web.Application;
-using Chat.Web.Domain.Models;
+using Chat.Application;
+using Chat.Domain.Models;
 
-namespace Chat.Web.Persistence
+namespace Chat.Persistence
 {
     public class ChatRepository : IChatRepository
     {

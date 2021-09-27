@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Chat.Web.Domain.Models;
+using Chat.Domain.Models;
 using MediatR;
 
-namespace Chat.Web.Application.ChatFeatures.Queries.Handlers
+namespace Chat.Application.ChatFeatures.Queries.Handlers
 {
     public class GetMessageListHandler : IRequestHandler<GetMessageListQuery, IReadOnlyList<MessageItem>>
     {

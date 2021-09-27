@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using Chat.Web.Domain.Models;
+using Chat.Domain.Models;
 using Chat.Web.Dtos;
 
 namespace Chat.Web.MappingProfiles

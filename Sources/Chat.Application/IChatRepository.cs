@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Chat.Web.Domain.Models;
+using Chat.Domain.Models;
 
-namespace Chat.Web.Application
+namespace Chat.Application
 {
     public interface IChatRepository
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chat.Web.Domain.Models
+namespace Chat.Domain.Models
 {
     public class MessageItem
     {

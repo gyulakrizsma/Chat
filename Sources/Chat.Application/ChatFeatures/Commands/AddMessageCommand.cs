@@ -1,7 +1,7 @@
-﻿using Chat.Web.Domain.Models;
+﻿using Chat.Domain.Models;
 using MediatR;
 
-namespace Chat.Web.Application.ChatFeatures.Commands
+namespace Chat.Application.ChatFeatures.Commands
 {
     public record AddMessageCommand(string User, string Message) : IRequest<MessageItem>;
 }
